@@ -10,7 +10,7 @@ var reBlocked = require('./static/re_blocked.json');
 
 var port = process.env.PORT || 80;
 var subdomainsAsPath = false;
-var serveHomepage = true;
+var serveHomepage = false;
 var serveHomepageOnAllSubdomains = false;
 
 var httpsProxy = proxy.createProxyServer({
@@ -52,7 +52,6 @@ function getSubdomain (req, rewrite) {
     sub = domain.slice(0, domain.indexOf('.', domain.indexOf('.') - 1) + 1);
   }
   if (sub === "rprxy.") sub = "";
-  console.log(sub);
   return sub;
 }
 
