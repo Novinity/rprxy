@@ -49,8 +49,10 @@ function getSubdomain (req, rewrite) {
     sub = res[1];
   } else {
     var domain = req.headers.host;
-    sub = domain.slice(0, domain.lastIndexOf('.', domain.lastIndexOf('.') - 1) + 1);
+    sub = domain.slice(0, domain.indexOf('.', domain.indexOf('.') - 1) + 1);
   }
+  if (sub === "rprxy.") sub = "";
+  console.log(sub);
   return sub;
 }
 
